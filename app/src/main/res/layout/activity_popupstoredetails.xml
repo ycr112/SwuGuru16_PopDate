@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 다른 UI 요소들 -->
+    <ImageView
+        android:id="@+id/storeImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/storeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Store Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/storeDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Store Description"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/storePeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Period"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/storeLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/storeLinkButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visit Store"
+        android:layout_marginTop="16dp"/>
+
+    <ImageButton
+        android:id="@+id/wishlistButton"
+        android:layout_width="39dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:src="@mipmap/ic_like_foreground" />
+
+    <ListView
+        android:id="@+id/commentsListView"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/commentInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="댓글을 입력하세요"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/sendCommentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 달기"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
