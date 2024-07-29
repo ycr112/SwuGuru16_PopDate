@@ -52,11 +52,12 @@
 
     <ImageButton
         android:id="@+id/wishlistButton"
-        android:layout_width="39dp"
-        android:layout_height="43dp"
+        android:layout_width="59dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/white"
-        android:src="@mipmap/ic_like_foreground" />
+        android:src="@mipmap/ic_like_foreground"
+        android:contentDescription="Add to wishlist"/>
 
     <ListView
         android:id="@+id/commentsListView"
@@ -66,10 +67,10 @@
 
     <EditText
         android:id="@+id/commentInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="댓글을 입력하세요"
-        android:layout_marginTop="16dp"/>
+        android:layout_width="381dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:hint="댓글을 입력하세요" />
 
     <Button
         android:id="@+id/sendCommentButton"

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class DBPopupStoreDetail(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_NAME = "popupStore.db"
+        private const val DATABASE_NAME = "PopDate.db"  // 데이터베이스 이름 수정
         private const val DATABASE_VERSION = 1
 
         const val TABLE_POPUP_STORES = "popupStores"
