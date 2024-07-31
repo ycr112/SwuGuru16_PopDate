@@ -1,13 +1,21 @@
-package com.example.popupstoreapp
+package com.example.popdate
 
 import android.content.ContentValues
 import android.content.Intent
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.popdate.DBPopupStoreDetail
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+
+
 
 class PopupStoreDetailActivity : AppCompatActivity() {
 
@@ -27,7 +35,9 @@ class PopupStoreDetailActivity : AppCompatActivity() {
     private lateinit var commentsAdapter: ArrayAdapter<String>
     private val commentsList = mutableListOf<String>()
 
-    private var storeId: String = "sampleStoreId" // 예시로 고정된 storeId 값 사용, 실제 구현에서는 동적으로 설정
+    private var storeId: String? = null
+    private var imm: InputMethodManager? = null
+    private var cl: ConstraintLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,41 +54,46 @@ class PopupStoreDetailActivity : AppCompatActivity() {
         commentInput = findViewById(R.id.commentInput)
         sendCommentButton = findViewById(R.id.sendCommentButton)
         commentsListView = findViewById(R.id.commentsListView)
+        cl = findViewById(R.id.cl) // ConstraintLayout 초기화
 
-        // DatabaseHelper 초기화
+        imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        cl?.setOnClickListener {
+            imm?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        }
+
+        // 데이터베이스 설정
         databaseHelper = DBPopupStoreDetail(this)
         db = databaseHelper.writableDatabase
 
-        // 데이터 설정 (테스트 데이터 사용)
-        storeName.text = "팝업스토어 이름"
-        storeDescription.text = "팝업스토어 소개 내용입니다."
-        storePeriod.text = "운영 기간: 2024-07-01 ~ 2024-07-31"
-        storeLocation.text = "위치: 서울시 강남구"
+        // Intent로부터 storeId 가져오기
+        storeId = intent.getStringExtra("STORE_ID")
+
+        if (storeId != null) {
+            loadStoreData(storeId!!)
+            loadComments()
+        }
+
+        // 링크 버튼 클릭 리스너 설정
         storeLinkButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://example.com") // 실제 링크로 교체
-            }
+            val link = getStoreLink(storeId!!)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
         }
 
         // 위시리스트 버튼 클릭 리스너 설정
         wishlistButton.setOnClickListener {
-            if (isWishListed(storeId)) {
-                wishListDelete(storeId)
-            } else {
-                wishListAdd(storeId)
+            if (storeId != null) {
+                if (isWishListed(storeId!!)) {
+                    wishListDelete(storeId!!)
+                } else {
+                    wishListAdd(storeId!!)
+                }
             }
         }
-
-        // 초기 위시리스트 상태 설정
-        updateWishlistButton()
 
         // 댓글 리스트 초기화
         commentsAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, commentsList)
         commentsListView.adapter = commentsAdapter
-
-        // 댓글 불러오기
-        loadComments()
 
         // 댓글 달기 버튼 클릭 리스너 설정
         sendCommentButton.setOnClickListener {
@@ -90,6 +105,67 @@ class PopupStoreDetailActivity : AppCompatActivity() {
                 Toast.makeText(this, "댓글을 입력해 주세요.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // EditText의 IME_ACTION_DONE 동작 처리
+        commentInput.setOnEditorActionListener { textView, action, event ->
+            var handled = false
+            if (action == EditorInfo.IME_ACTION_DONE) {
+                imm?.hideSoftInputFromWindow(commentInput.windowToken, 0)
+                handled = true
+            }
+            handled
+        }
+    }
+
+    private fun loadStoreData(storeId: String) {
+        val selection = "${DBPopupStoreDetail.COLUMN_STORE_ID} = ?"
+        val selectionArgs = arrayOf(storeId)
+        val cursor = db.query(
+            DBPopupStoreDetail.TABLE_POPUP_STORES,
+            null,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        if (cursor.moveToFirst()) {
+            val name = cursor.getString(cursor.getColumnIndexOrThrow(DBPopupStoreDetail.COLUMN_NAME))
+            val location = cursor.getString(cursor.getColumnIndexOrThrow(DBPopupStoreDetail.COLUMN_LOCATION))
+            val period = cursor.getString(cursor.getColumnIndexOrThrow(DBPopupStoreDetail.COLUMN_PERIOD))
+            val imageUrl = cursor.getString(cursor.getColumnIndexOrThrow(DBPopupStoreDetail.COLUMN_IMAGE_URL))
+
+            storeName.text = name
+            storeLocation.text = location
+            storePeriod.text = period
+            storeDescription.text = "Store Description" // 여기에 실제 설명을 추가할 수 있습니다.
+
+            Glide.with(this)
+                .load(imageUrl)
+                .into(storeImage)
+        }
+        cursor.close()
+    }
+
+    private fun getStoreLink(storeId: String): String {
+        val selection = "${DBPopupStoreDetail.COLUMN_STORE_ID} = ?"
+        val selectionArgs = arrayOf(storeId)
+        val cursor = db.query(
+            DBPopupStoreDetail.TABLE_POPUP_STORES,
+            arrayOf(DBPopupStoreDetail.COLUMN_LINK),
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+        var link = ""
+        if (cursor.moveToFirst()) {
+            link = cursor.getString(cursor.getColumnIndexOrThrow(DBPopupStoreDetail.COLUMN_LINK))
+        }
+        cursor.close()
+        return link
     }
 
     private fun wishListAdd(storeId: String) {
@@ -127,7 +203,7 @@ class PopupStoreDetailActivity : AppCompatActivity() {
     }
 
     private fun updateWishlistButton() {
-        if (isWishListed(storeId)) {
+        if (storeId != null && isWishListed(storeId!!)) {
             wishlistButton.setImageResource(R.mipmap.ic_like_filled_foreground)
         } else {
             wishlistButton.setImageResource(R.mipmap.ic_like_foreground)

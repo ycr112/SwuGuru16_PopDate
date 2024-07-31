@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.popupstoreapp"
+    namespace = "com.example.popdate"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.popupstoreapp"
+        applicationId = "com.example.popdate"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
@@ -36,12 +36,14 @@ android {
 }
 
 dependencies {
+    //noinspection UseTomlInstead
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation(libs.androidx.constraintlayout)
     //noinspection UseTomlInstead
     implementation ("com.github.bumptech.glide:glide:4.14.2")
+    //noinspection GradleDependency
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
