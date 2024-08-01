@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F3E5F5">
+
+    <!-- 상단 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#AB47BC"
+        android:padding="8dp">
+
+        <!-- 검색 아이콘 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_search_category_default"
+            android:contentDescription="@string/search_icon"
+            app:tint="@android:color/white"
+            android:onClick="onSearchIconClick" />
+
+        <!-- 검색 텍스트 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- 검색 결과 및 광고 팝업 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색 결과 항목 1"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="검색 결과 항목 2"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:textColor="@android:color/black" />
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:background="#AB47BC"
+            android:text="광고 팝업"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <!-- 하단 버튼 영역 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <!-- 홈 버튼 -->
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#9C27B0"
+            android:text="홈"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

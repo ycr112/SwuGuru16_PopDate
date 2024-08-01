@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 광고 영역 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:scaleType="centerCrop" />
+
+    <!-- 검색 아이콘 (광고 영역 아래) -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_search_category_default"
+        android:contentDescription="@string/search_icon"
+        app:tint="@android:color/white"
+        android:onClick="onSearchIconClick"
+
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="16dp" />
+
+    <!-- 알림 버튼 -->
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알림"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="16dp" />
+
+    <!-- 하단 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/categoryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="카테고리" />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="검색하기" />
+
+        <Button
+            android:id="@+id/myPageButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="마이페이지" />
+    </LinearLayout>
+
+    <!-- 로그인 버튼 -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:padding="16dp" />
+
+</RelativeLayout>

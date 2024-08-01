@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@android:color/white"> <!-- 배경을 흰색으로 설정 -->
+
+    <!-- 사용자 이름 입력 -->
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="아이디"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- 비밀번호 입력 -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp" />
+
+
+
+    <!-- 버튼 그리드 레이아웃 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- 상단 버튼 레이아웃 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- email로 회원가입 버튼 -->
+            <Button
+                android:id="@+id/signupEmailButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="로그인"
+                android:background="#9C27B0"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:padding="16dp"
+                android:layout_marginEnd="8dp" /> <!-- 버튼 사이의 간격 -->
+
+            <!-- sns로 로그인 버튼 -->
+            <Button
+                android:id="@+id/snsLoginButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="회원가입"
+                android:background="#9C27B0"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:padding="16dp"
+                android:layout_marginStart="8dp" /> <!-- 버튼 사이의 간격 -->
+
+        </LinearLayout>
+
+        <!-- 하단 버튼 레이아웃 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <!-- sns로 회원가입 버튼 -->
+            <Button
+                android:id="@+id/snsSignupButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="sns로 로그인"
+                android:background="#9C27B0"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:padding="16dp"
+                android:layout_marginEnd="8dp" /> <!-- 버튼 사이의 간격 -->
+
+            <!-- 로그인 버튼 (하단) -->
+            <Button
+                android:id="@+id/loginButtonBottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="sns로 회원가입"
+                android:background="#9C27B0"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:padding="16dp"
+                android:layout_marginStart="8dp" /> <!-- 버튼 사이의 간격 -->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
