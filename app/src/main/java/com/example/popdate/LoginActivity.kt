@@ -61,3 +61,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+
+class RegisterActivity {
+
+}

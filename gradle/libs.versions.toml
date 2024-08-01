@@ -22,6 +22,9 @@ materialVersion = "1.9.0"
 picasso = "2.71828"
 picassoVersion = "2.8"
 firebaseDatabaseKtx = "21.0.0"
+viewbinding = "8.5.1"
+databindingCompilerCommon = "8.5.1"
+navigationRuntimeKtx = "2.7.7"
 
 [libraries]
 androidx-appcompat-v161 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
@@ -45,6 +48,9 @@ material-v190 = { module = "com.google.android.material:material", version.ref =
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 picasso-v28 = { module = "com.squareup.picasso:picasso", version.ref = "picassoVersion" }
 firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebaseDatabaseKtx" }
+androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
+androidx-databinding-compiler-common = { group = "androidx.databinding", name = "databinding-compiler-common", version.ref = "databindingCompilerCommon" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
