@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopupStoreDetailActivity">
+
+    <!-- Store Image -->
+    <ImageView
+        android:id="@+id/storeImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Store Name -->
+    <TextView
+        android:id="@+id/storeName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Store Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/storeImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Store Description -->
+    <TextView
+        android:id="@+id/storeDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Store Description"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/storeName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Store Period -->
+    <TextView
+        android:id="@+id/storePeriod"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Period"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/storeDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Store Location -->
+    <TextView
+        android:id="@+id/storeLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/storePeriod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Store Link Button -->
+    <Button
+        android:id="@+id/storeLinkButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Visit Store"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/storeLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Wishlist Button -->
+    <ImageButton
+        android:id="@+id/wishlistButton"
+        android:layout_width="69dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Add to wishlist"
+        android:src="@mipmap/ic_like_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storeLinkButton" />
+
+    <!-- Comments ListView -->
+    <ListView
+        android:id="@+id/commentsListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/commentInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wishlistButton"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Comment Input -->
+    <EditText
+        android:id="@+id/commentInput"
+        android:layout_width="318dp"
+        android:layout_height="115dp"
+        android:hint="댓글을 입력하세요"
+        app:layout_constraintBottom_toTopOf="@id/sendCommentButton"
+        app:layout_constraintEnd_toStartOf="@id/sendCommentButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Send Comment Button -->
+    <Button
+        android:id="@+id/sendCommentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 달기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/commentInput"
+        android:layout_marginTop="8dp"/>
+
+    <!-- ConstraintLayout to dismiss keyboard -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
