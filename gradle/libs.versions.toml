@@ -25,6 +25,7 @@ firebaseDatabaseKtx = "21.0.0"
 viewbinding = "8.5.1"
 databindingCompilerCommon = "8.5.1"
 navigationRuntimeKtx = "2.7.7"
+junitJunit = "4.12"
 
 [libraries]
 androidx-appcompat-v161 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
@@ -51,6 +52,7 @@ firebase-database-ktx = { group = "com.google.firebase", name = "firebase-databa
 androidx-viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "viewbinding" }
 androidx-databinding-compiler-common = { group = "androidx.databinding", name = "databinding-compiler-common", version.ref = "databindingCompilerCommon" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

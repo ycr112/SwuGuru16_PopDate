@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".PopupStoreDetailActivity">
 
     <!-- Store Image -->
@@ -25,10 +26,11 @@
         android:text="Store Name"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#000000"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/storeImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Store Description -->
     <TextView
@@ -36,10 +38,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Store Description"
+        android:textColor="#000000"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/storeName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Store Period -->
     <TextView
@@ -47,10 +50,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Period"
+        android:textColor="#000000"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/storeDescription"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Store Location -->
     <TextView
@@ -58,10 +62,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Location"
+        android:textColor="#000000"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@id/storePeriod"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Store Link Button -->
     <Button
@@ -69,54 +74,81 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Visit Store"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#6200EE"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/storeLocation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Wishlist Button -->
     <ImageButton
         android:id="@+id/wishlistButton"
         android:layout_width="69dp"
-        android:layout_height="64dp"
+        android:layout_height="52dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@android:color/white"
         android:contentDescription="Add to wishlist"
         android:src="@mipmap/ic_like_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/storeLinkButton" />
 
     <!-- Comments ListView -->
-    <ListView
-        android:id="@+id/commentsListView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/commentInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wishlistButton"
-        android:layout_marginTop="16dp"/>
 
     <!-- Comment Input -->
-    <EditText
-        android:id="@+id/commentInput"
-        android:layout_width="318dp"
-        android:layout_height="115dp"
-        android:hint="댓글을 입력하세요"
-        app:layout_constraintBottom_toTopOf="@id/sendCommentButton"
-        app:layout_constraintEnd_toStartOf="@id/sendCommentButton"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/commentsListView"
+        android:layout_width="405dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/commentInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wishlistButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!-- Send Comment Button -->
+
+    <!-- Home Button -->
+
+    <EditText
+        android:id="@+id/commentInput"
+        android:layout_width="357dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#DDDDDD"
+        android:hint="댓글을 입력하세요"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/sendCommentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#6200EE"
         android:text="댓글 달기"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/commentInput"
-        android:layout_marginTop="8dp"/>
+        app:layout_constraintStart_toEndOf="@id/commentInput" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:backgroundTint="#9C27B0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
     <!-- ConstraintLayout to dismiss keyboard -->
     <androidx.constraintlayout.widget.ConstraintLayout

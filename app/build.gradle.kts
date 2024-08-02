@@ -12,6 +12,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 
     defaultConfig {
@@ -72,13 +73,15 @@ dependencies {
     implementation(libs.androidx.databinding.compiler.common)
     implementation(libs.androidx.navigation.runtime.ktx) // 카카오 로그인
 
-    implementation("androidx.navigation:navigation-runtime-ktx:2.7.1")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.7.7")
+    implementation ("com.google.android.material:material:1.12.0")
 
-    implementation("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2") // Room 컴파일러 추가
-    implementation("androidx.room:room-ktx:2.5.2")
+    implementation("androidx.room:room-runtime:2.6.1")
+    testImplementation(libs.junit.junit)
+    kapt("androidx.room:room-compiler:2.6.1") // Room 컴파일러 추가
+    implementation("androidx.room:room-ktx:2.6.1")
 
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")

@@ -15,8 +15,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-
-
 class PopupStoreDetailActivity : AppCompatActivity() {
 
     private lateinit var storeImage: ImageView
@@ -115,6 +113,14 @@ class PopupStoreDetailActivity : AppCompatActivity() {
             }
             handled
         }
+
+        // 홈 버튼 클릭 리스너 설정
+        val homeButton = findViewById<Button>(R.id.homeButton)
+        homeButton.setOnClickListener {
+            // MainActivity로 전환
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun loadStoreData(storeId: String) {
@@ -143,6 +149,7 @@ class PopupStoreDetailActivity : AppCompatActivity() {
 
             Glide.with(this)
                 .load(imageUrl)
+                .apply(RequestOptions().placeholder(R.drawable.ic_launcher_foreground))  // Placeholder 이미지 설정 (옵션)
                 .into(storeImage)
         }
         cursor.close()
