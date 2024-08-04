@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class CategoryActivity : AppCompatActivity() {
-
     private lateinit var regionConfirmButton: Button
     private lateinit var regionSearchEditText: EditText
     private lateinit var categoryClothing: CheckBox
